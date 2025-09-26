@@ -1,47 +1,111 @@
-# LOG_ATTACKES_DETECTION
+# 🛡️ LOG_ATTACKES_DETECTION
 
-## Overview
-This project is designed to detect and analyze attack patterns in log files using machine learning techniques. It includes scripts, notebooks, and models for preprocessing log data, training classifiers, and evaluating detection performance.
+## 📌 Aperçu
+Ce projet permet de **détecter et analyser automatiquement des attaques** dans les journaux d’un serveur Apache grâce à des modèles de **Machine Learning**.  
+Il combine scripts Python, notebooks Jupyter et une interface web (Node.js/React) pour tester le système.  
 
-## Features
-- Log data preprocessing
-- Machine learning model training and evaluation
-- Jupyter notebooks for experimentation
-- Pre-trained models and vectorizers
-- Web application interface (if applicable)
+Les attaques détectées incluent une large variété de scénarios allant des **attaques par force brute** aux **exploits Zero-Day**.  
 
-## Project Structure
-- `application.py`: Main Python application script
-- `app.ipynb`, `ML.ipynb`, `Projet.ipynb`: Jupyter notebooks for data analysis and model development
-- `log_dataset_Attackes_detection.csv`, `log_dataset.csv`: Log datasets for training and testing
-- `model_finale.pkl`, `vectorizer.pkl`: Saved ML model and vectorizer
-- `main.js`: JavaScript file (possibly for web interface)
-- `static/`, `templates/`: Web application assets and templates
-- `package.json`: Node.js dependencies (if web interface is used)
+---
 
-## Getting Started
-1. Clone the repository:
-   ```powershell
-   git clone https://github.com/AhmedbBZ/LOG_ATTACKES_DETECTION.git
-   ```
-2. Install required Python packages:
-   ```powershell
-   pip install -r requirements.txt
-   ```
-3. Run the application or open notebooks for analysis.
+## ✨ Fonctionnalités
+- Prétraitement des logs Apache  
+- Extraction de features avec **TF-IDF**  
+- Équilibrage du dataset via **SMOTE-ENN**  
+- Entraînement et évaluation de modèles ML (classification multi-classes)  
+- Sauvegarde et réutilisation des modèles (`model_finale.pkl`, `vectorizer.pkl`)  
+- Interface web pour tester en temps réel  
 
-## Usage
-- Use the Jupyter notebooks for data exploration and model training.
-- Run `application.py` to execute the main detection pipeline.
-- If a web interface is provided, start the server and access the dashboard.
+---
 
-## Requirements
-- Python 3.x
-- Required Python packages (see `requirements.txt`)
-- Node.js (if using the web interface)
+## 📂 Structure du projet
+- `application.py` → Script principal Python (pipeline de détection)  
+- `app.ipynb`, `ML.ipynb`, `Projet.ipynb` → Notebooks d’analyse et d’entraînement  
+- `log_dataset_Attackes_detection.csv`, `log_dataset.csv` → Datasets de logs Apache  
+- `model_finale.pkl`, `vectorizer.pkl` → Modèle ML et vectorizer sauvegardés  
+- `main.js` → Fichier JavaScript (interface web)  
+- `static/`, `templates/` → Fichiers statiques et templates du serveur web  
+- `package.json` → Dépendances Node.js  
 
-## License
-This project is licensed under the MIT License.
+---
 
-## Author
-AhmedbBZ
+## 🛑 Attaques détectées
+Le système est capable de classer les logs parmi les catégories suivantes :  
+
+| Classe | Nombre d’exemples |
+|--------|-------------------|
+| ✅ Benign | 6841 |
+| 🔑 Brute Force Attack | 458 |
+| 💻 Malware and Ransomware | 335 |
+| ⬆️ Privilege Escalation | 282 |
+| 🌐 Distributed Denial of Service (DDoS) | 263 |
+| 🔗 Man-in-the-Middle (MITM) | 256 |
+| ✍️ Cross-Site Scripting (XSS) | 224 |
+| 🗄️ SQL Injection | 216 |
+| 🎭 Cross-Site Request Forgery (CSRF) | 188 |
+| 📤 Data Exfiltration | 186 |
+| 🎣 Phishing & Credential Harvesting | 178 |
+| 🕵️ Insider Threats | 138 |
+| ⚡ Remote Code Execution (RCE) | 127 |
+| 📂 Directory Traversal | 125 |
+| 🛠️ Zero-Day Exploit | 109 |
+| 📎 Phishing via Malicious Links | 74 |
+
+---
+
+## ⚙️ Installation et exécution
+
+### 🔹 Cloner le dépôt
+```bash
+git clone https://github.com/AhmedbBZ/LOG_ATTACKES_DETECTION.git
+cd LOG_ATTACKES_DETECTION
+```
+
+### 🔹 Installer les dépendances Python
+```bash
+pip install -r requirements.txt
+```
+
+### 🔹 Lancer l’application Python
+```bash
+python application.py
+```
+
+### 🔹 (Optionnel) Installer et lancer l’interface web
+```bash
+npm install
+npm start
+```
+
+---
+
+## 🖥️ Utilisation
+1. Ouvrir l’application (console ou navigateur `http://localhost:3000`).  
+2. Fournir un log issu du dataset :  
+   **`log_dataset_Attackes_detection.csv`**  
+3. Cliquer sur **Upload and Analyze**.  
+4. ✅ Le système affiche la **catégorie détectée** (attaque ou log bénin).  
+
+---
+
+## 🛠️ Technologies
+- **Python** : scikit-learn, TF-IDF, SMOTE-ENN  
+- **Node.js / Express** : Backend web  
+- **React.js** : Frontend (optionnel)  
+- **CSV dataset** : Logs Apache (attaques + normaux)  
+
+---
+
+## 🎯 Résultats attendus
+- Classification automatique des logs avec une précision d’environ **95%**  
+- Détection rapide et fiable des attaques dans les journaux Apache  
+
+---
+
+## 📜 Licence
+Projet sous licence **MIT**.  
+
+---
+
+## 👤 Auteur
+**AhmedbBouzid**
